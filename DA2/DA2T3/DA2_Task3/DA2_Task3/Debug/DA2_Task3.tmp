@@ -1,0 +1,36 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.1.57</VERSION>
+ <DEVICE>"ATmega328P"</DEVICE>
+ <WORKING_DIR>C:\Users\Michael\Documents\CpE\CpE 301\DA2\DA2T3\DA2_Task3\DA2_Task3\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\avrasm\inc</DIR>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\Michael\Documents\CpE\CpE 301\DA2\DA2T3\DA2_Task3\DA2_Task3\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.0.90\avrasm\inc\m328pdef.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\Michael\Documents\CpE\CpE 301\DA2\DA2T3\DA2_Task3\DA2_Task3\Debug\DA2_Task3.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>DA2_Task3.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>DA2_Task3.map</FILE>
+  <FILE>DA2_Task3.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <INIT><FILE>C:\Users\Michael\Documents\CpE\CpE 301\DA2\DA2T3\DA2_Task3\DA2_Task3\main.asm</FILE><LINE>13</LINE></INIT>
+  <TIM1_COMPA><FILE>C:\Users\Michael\Documents\CpE\CpE 301\DA2\DA2T3\DA2_Task3\DA2_Task3\main.asm</FILE><LINE>55</LINE></TIM1_COMPA>
+  <Begin><FILE>C:\Users\Michael\Documents\CpE\CpE 301\DA2\DA2T3\DA2_Task3\DA2_Task3\main.asm</FILE><LINE>39</LINE></Begin>
+  <Forever><FILE>C:\Users\Michael\Documents\CpE\CpE 301\DA2\DA2T3\DA2_Task3\DA2_Task3\main.asm</FILE><LINE>51</LINE></Forever>
+  <Fifth><FILE>C:\Users\Michael\Documents\CpE\CpE 301\DA2\DA2T3\DA2_Task3\DA2_Task3\main.asm</FILE><LINE>69</LINE></Fifth>
+  <Tenth><FILE>C:\Users\Michael\Documents\CpE\CpE 301\DA2\DA2T3\DA2_Task3\DA2_Task3\main.asm</FILE><LINE>73</LINE></Tenth>
+  <Fifteenth><FILE>C:\Users\Michael\Documents\CpE\CpE 301\DA2\DA2T3\DA2_Task3\DA2_Task3\main.asm</FILE><LINE>77</LINE></Fifteenth>
+  <Twentieth><FILE>C:\Users\Michael\Documents\CpE\CpE 301\DA2\DA2T3\DA2_Task3\DA2_Task3\main.asm</FILE><LINE>81</LINE></Twentieth>
+  <ToggleDone><FILE>C:\Users\Michael\Documents\CpE\CpE 301\DA2\DA2T3\DA2_Task3\DA2_Task3\main.asm</FILE><LINE>86</LINE></ToggleDone>
+ </LABELS>
+</ASSEMBLER_INFO>

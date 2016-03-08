@@ -1,0 +1,234 @@
+
+DA2_Task6.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  000001da  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000166  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000004  00800100  00800100  000001da  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000001da  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000020c  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000028  00000000  00000000  0000024c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000000cc  00000000  00000000  00000274  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000007c  00000000  00000000  00000340  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000000c7  00000000  00000000  000003bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000048  00000000  00000000  00000484  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000166  00000000  00000000  000004cc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000049  00000000  00000000  00000632  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000018  00000000  00000000  0000067b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 48 00 	jmp	0x90	; 0x90 <__vector_11>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	21 e0       	ldi	r18, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a4 30       	cpi	r26, 0x04	; 4
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 8f 00 	call	0x11e	; 0x11e <main>
+  88:	0c 94 b1 00 	jmp	0x162	; 0x162 <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <__vector_11>:
+
+int counter;				// global variable for counter
+int multiple;				// global variable for check counter (5th/10th)
+
+ISR(TIMER1_COMPA_vect)		// interrupt subroutine body
+{
+  90:	1f 92       	push	r1
+  92:	0f 92       	push	r0
+  94:	0f b6       	in	r0, 0x3f	; 63
+  96:	0f 92       	push	r0
+  98:	11 24       	eor	r1, r1
+  9a:	8f 93       	push	r24
+  9c:	9f 93       	push	r25
+	counter++;				// increment counter for LED bargraph
+  9e:	80 91 02 01 	lds	r24, 0x0102
+  a2:	90 91 03 01 	lds	r25, 0x0103
+  a6:	01 96       	adiw	r24, 0x01	; 1
+	if(counter > 255)		// if counter went above 255 (9th bit)
+  a8:	8f 3f       	cpi	r24, 0xFF	; 255
+  aa:	91 05       	cpc	r25, r1
+  ac:	09 f0       	breq	.+2      	; 0xb0 <__vector_11+0x20>
+  ae:	2c f4       	brge	.+10     	; 0xba <__vector_11+0x2a>
+int counter;				// global variable for counter
+int multiple;				// global variable for check counter (5th/10th)
+
+ISR(TIMER1_COMPA_vect)		// interrupt subroutine body
+{
+	counter++;				// increment counter for LED bargraph
+  b0:	90 93 03 01 	sts	0x0103, r25
+  b4:	80 93 02 01 	sts	0x0102, r24
+  b8:	04 c0       	rjmp	.+8      	; 0xc2 <__vector_11+0x32>
+	if(counter > 255)		// if counter went above 255 (9th bit)
+		counter = 0;		// reset counter back to zero
+  ba:	10 92 03 01 	sts	0x0103, r1
+  be:	10 92 02 01 	sts	0x0102, r1
+	PORTB = counter;		// output counter to LED bargraph
+  c2:	80 91 02 01 	lds	r24, 0x0102
+  c6:	85 b9       	out	0x05, r24	; 5
+	multiple++;				// increment counter for 5th/10th checks
+  c8:	80 91 00 01 	lds	r24, 0x0100
+  cc:	90 91 01 01 	lds	r25, 0x0101
+  d0:	01 96       	adiw	r24, 0x01	; 1
+  d2:	90 93 01 01 	sts	0x0101, r25
+  d6:	80 93 00 01 	sts	0x0100, r24
+	switch(multiple) {
+  da:	8a 30       	cpi	r24, 0x0A	; 10
+  dc:	91 05       	cpc	r25, r1
+  de:	69 f0       	breq	.+26     	; 0xfa <__vector_11+0x6a>
+  e0:	1c f4       	brge	.+6      	; 0xe8 <__vector_11+0x58>
+  e2:	05 97       	sbiw	r24, 0x05	; 5
+  e4:	39 f0       	breq	.+14     	; 0xf4 <__vector_11+0x64>
+  e6:	14 c0       	rjmp	.+40     	; 0x110 <__vector_11+0x80>
+  e8:	8f 30       	cpi	r24, 0x0F	; 15
+  ea:	91 05       	cpc	r25, r1
+  ec:	49 f0       	breq	.+18     	; 0x100 <__vector_11+0x70>
+  ee:	44 97       	sbiw	r24, 0x14	; 20
+  f0:	51 f0       	breq	.+20     	; 0x106 <__vector_11+0x76>
+  f2:	0e c0       	rjmp	.+28     	; 0x110 <__vector_11+0x80>
+		case 5:				// if first 5th rising edge
+			PORTC = 0x20;	// PC4 = 0 and PC5 = 1
+  f4:	80 e2       	ldi	r24, 0x20	; 32
+  f6:	88 b9       	out	0x08, r24	; 8
+			break;
+  f8:	0b c0       	rjmp	.+22     	; 0x110 <__vector_11+0x80>
+		case 10:			// if first 10th rising edge
+			PORTC = 0x10;	// PC4 = 1 and PC5 = 0
+  fa:	80 e1       	ldi	r24, 0x10	; 16
+  fc:	88 b9       	out	0x08, r24	; 8
+			break;
+  fe:	08 c0       	rjmp	.+16     	; 0x110 <__vector_11+0x80>
+		case 15:			// if second 5th rising edge
+			PORTC = 0x30;	// PC4 = 1 and PC5 = 1
+ 100:	80 e3       	ldi	r24, 0x30	; 48
+ 102:	88 b9       	out	0x08, r24	; 8
+			break;
+ 104:	05 c0       	rjmp	.+10     	; 0x110 <__vector_11+0x80>
+		case 20:			// if second 10th rising edge
+			PORTC = 0x00;	// PC4 = 0 and PC5 = 0
+ 106:	18 b8       	out	0x08, r1	; 8
+			multiple = 0;	// clear check counter
+ 108:	10 92 01 01 	sts	0x0101, r1
+ 10c:	10 92 00 01 	sts	0x0100, r1
+			break;
+		default:
+			break;
+	}
+}
+ 110:	9f 91       	pop	r25
+ 112:	8f 91       	pop	r24
+ 114:	0f 90       	pop	r0
+ 116:	0f be       	out	0x3f, r0	; 63
+ 118:	0f 90       	pop	r0
+ 11a:	1f 90       	pop	r1
+ 11c:	18 95       	reti
+
+0000011e <main>:
+
+int main(void)
+{
+	counter = 0;		// initialize counter to zero
+ 11e:	10 92 03 01 	sts	0x0103, r1
+ 122:	10 92 02 01 	sts	0x0102, r1
+	multiple = 0;		// initialize check counter to zero
+ 126:	10 92 01 01 	sts	0x0101, r1
+ 12a:	10 92 00 01 	sts	0x0100, r1
+	DDRB = 0xFF;		// set all of PORTB as outputs
+ 12e:	8f ef       	ldi	r24, 0xFF	; 255
+ 130:	84 b9       	out	0x04, r24	; 4
+	DDRC = 0x30;		// set PC4 and PC5 as outputs
+ 132:	80 e3       	ldi	r24, 0x30	; 48
+ 134:	87 b9       	out	0x07, r24	; 7
+	TCCR1B |= 0x0D;		// setup up CTC mode and prescaler (1024) for timer
+ 136:	e1 e8       	ldi	r30, 0x81	; 129
+ 138:	f0 e0       	ldi	r31, 0x00	; 0
+ 13a:	80 81       	ld	r24, Z
+ 13c:	8d 60       	ori	r24, 0x0D	; 13
+ 13e:	80 83       	st	Z, r24
+	TCNT1 = 0;			// initialize timer1 to zero
+ 140:	10 92 85 00 	sts	0x0085, r1
+ 144:	10 92 84 00 	sts	0x0084, r1
+	OCR1A = 3906;		// set CTC value
+ 148:	82 e4       	ldi	r24, 0x42	; 66
+ 14a:	9f e0       	ldi	r25, 0x0F	; 15
+ 14c:	90 93 89 00 	sts	0x0089, r25
+ 150:	80 93 88 00 	sts	0x0088, r24
+	TIMSK1 |= (1 << OCIE1A);	//enable compare interrupt
+ 154:	ef e6       	ldi	r30, 0x6F	; 111
+ 156:	f0 e0       	ldi	r31, 0x00	; 0
+ 158:	80 81       	ld	r24, Z
+ 15a:	82 60       	ori	r24, 0x02	; 2
+ 15c:	80 83       	st	Z, r24
+	sei();				// enable global interrupts
+ 15e:	78 94       	sei
+	
+    while (1)			// loop forever and execute interrupt
+    {					// subroutine every 0.5 seconds
+    }
+ 160:	ff cf       	rjmp	.-2      	; 0x160 <main+0x42>
+
+00000162 <_exit>:
+ 162:	f8 94       	cli
+
+00000164 <__stop_program>:
+ 164:	ff cf       	rjmp	.-2      	; 0x164 <__stop_program>
