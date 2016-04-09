@@ -1,0 +1,336 @@
+
+DA4_Task1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  000001a4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000150  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000001a4  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000001d4  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000028  00000000  00000000  00000214  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000188  00000000  00000000  0000023c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000103  00000000  00000000  000003c4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000015c  00000000  00000000  000004c7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000034  00000000  00000000  00000624  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000001a7  00000000  00000000  00000658  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000162  00000000  00000000  000007ff  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000018  00000000  00000000  00000961  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+   8:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+   c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  10:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  14:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  18:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  1c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  20:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  24:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  28:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  2c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  30:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  34:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  38:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  3c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  40:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  44:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  48:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  4c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  50:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  54:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  58:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  5c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  60:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  64:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+  74:	0e 94 4b 00 	call	0x96	; 0x96 <main>
+  78:	0c 94 a6 00 	jmp	0x14c	; 0x14c <_exit>
+
+0000007c <__bad_interrupt>:
+  7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000080 <delay>:
+		delay(); // delay for 40ms
+	}
+	return 0;
+}
+
+void delay () {
+  80:	88 e2       	ldi	r24, 0x28	; 40
+  82:	90 e0       	ldi	r25, 0x00	; 0
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  84:	ef ec       	ldi	r30, 0xCF	; 207
+  86:	f7 e0       	ldi	r31, 0x07	; 7
+  88:	31 97       	sbiw	r30, 0x01	; 1
+  8a:	f1 f7       	brne	.-4      	; 0x88 <delay+0x8>
+  8c:	00 c0       	rjmp	.+0      	; 0x8e <delay+0xe>
+  8e:	00 00       	nop
+  90:	01 97       	sbiw	r24, 0x01	; 1
+	int i;					// declare i for counter
+	for(i = 0; i < 40; i++) {	// loop 40 times
+  92:	c1 f7       	brne	.-16     	; 0x84 <delay+0x4>
+		_delay_ms(1);		//	delay 1 ms
+	}						// total delay = 40*1ms = 40ms
+}
+  94:	08 95       	ret
+
+00000096 <main>:
+int main(void)
+{
+	unsigned char i, j, k;
+	// two variables to update 2nd and 3rd PWMs
+	unsigned char second, third;
+	DDRD = 0x40; // OC0A	
+  96:	80 e4       	ldi	r24, 0x40	; 64
+  98:	8a b9       	out	0x0a, r24	; 10
+	DDRB = 0x0A; // OC1A and OC2A
+  9a:	8a e0       	ldi	r24, 0x0A	; 10
+  9c:	84 b9       	out	0x04, r24	; 4
+	j = 230;
+	k = 230;
+	// both counters for 2nd and 3rd PWM will start at 0
+	second = 0;
+	third = 0;
+	OCR0A = 230; // 230 is 10% value of 255 when decrementing
+  9e:	86 ee       	ldi	r24, 0xE6	; 230
+  a0:	87 bd       	out	0x27, r24	; 39
+	TCCR0A = 0xC1; // Phase Correct PWM, inverted
+  a2:	91 ec       	ldi	r25, 0xC1	; 193
+  a4:	94 bd       	out	0x24, r25	; 36
+	TCCR0B = 0x03; // N = 64
+  a6:	43 e0       	ldi	r20, 0x03	; 3
+  a8:	45 bd       	out	0x25, r20	; 37
+	OCR1A = 230; // 230 is 10% value of 255 when decrementing
+  aa:	a8 e8       	ldi	r26, 0x88	; 136
+  ac:	b0 e0       	ldi	r27, 0x00	; 0
+  ae:	26 ee       	ldi	r18, 0xE6	; 230
+  b0:	30 e0       	ldi	r19, 0x00	; 0
+  b2:	11 96       	adiw	r26, 0x01	; 1
+  b4:	3c 93       	st	X, r19
+  b6:	2e 93       	st	-X, r18
+	TCCR1A = 0xC1; // Phase Correct PWM, inverted
+  b8:	90 93 80 00 	sts	0x0080, r25
+	TCCR1B = 0x03; // N = 64
+  bc:	40 93 81 00 	sts	0x0081, r20
+	OCR2A = 230; // 230 is 10% value of 255 when decrementing
+  c0:	e3 eb       	ldi	r30, 0xB3	; 179
+  c2:	f0 e0       	ldi	r31, 0x00	; 0
+  c4:	80 83       	st	Z, r24
+	TCCR2A = 0xC1; // Phase Correct PWM, inverted
+  c6:	90 93 b0 00 	sts	0x00B0, r25
+	TCCR2B = 0x04; // N = 64
+  ca:	94 e0       	ldi	r25, 0x04	; 4
+  cc:	90 93 b1 00 	sts	0x00B1, r25
+	
+    while (1) // loop forever
+    {
+		// update 3 PWM values at beginning of each loop
+		// from delay of 40ms
+		OCR0A = i;
+  d0:	87 bd       	out	0x27, r24	; 39
+		OCR1A = j;
+  d2:	11 96       	adiw	r26, 0x01	; 1
+  d4:	3c 93       	st	X, r19
+  d6:	2e 93       	st	-X, r18
+		OCR2A = k;
+  d8:	80 83       	st	Z, r24
+	DDRB = 0x0A; // OC1A and OC2A
+	// 3 variables being decremented to update 3 timers
+	// initialize to 230 for 10% value of 255
+	i = 230;
+	j = 230;
+	k = 230;
+  da:	06 ee       	ldi	r16, 0xE6	; 230
+		// from delay of 40ms
+		OCR0A = i;
+		OCR1A = j;
+		OCR2A = k;
+		second++; // increment counter for 2nd PWM every time 1st is updated
+		i = i-25; // increase duty cycle of PWM1 by 10%
+  dc:	cd ec       	ldi	r28, 0xCD	; 205
+	i = 230;
+	j = 230;
+	k = 230;
+	// both counters for 2nd and 3rd PWM will start at 0
+	second = 0;
+	third = 0;
+  de:	f1 2c       	mov	r15, r1
+		// update 3 PWM values at beginning of each loop
+		// from delay of 40ms
+		OCR0A = i;
+		OCR1A = j;
+		OCR2A = k;
+		second++; // increment counter for 2nd PWM every time 1st is updated
+  e0:	d1 e0       	ldi	r29, 0x01	; 1
+	DDRD = 0x40; // OC0A	
+	DDRB = 0x0A; // OC1A and OC2A
+	// 3 variables being decremented to update 3 timers
+	// initialize to 230 for 10% value of 255
+	i = 230;
+	j = 230;
+  e2:	16 ee       	ldi	r17, 0xE6	; 230
+			j = j-25; // increase duty cycle of PWM2 by 10%
+			if(j < 30) // if duty cycle is more than 90% (inverted)
+				j = 230; // reset duty cycle back to 10%
+		}
+		if(third >= 9) { // if PWM2 reset duty cycle
+			third = 0; // clear counter for PWM3
+  e4:	91 2c       	mov	r9, r1
+			k = k-25; // increase duty cycle of PWM3 by 10%
+			if(k < 30) // if duty cycle is more than 90% (inverted)
+				k = 230; // reset duty cycle back to 10%
+  e6:	0f 2e       	mov	r0, r31
+  e8:	f6 ee       	ldi	r31, 0xE6	; 230
+  ea:	ef 2e       	mov	r14, r31
+  ec:	f0 2d       	mov	r31, r0
+    while (1) // loop forever
+    {
+		// update 3 PWM values at beginning of each loop
+		// from delay of 40ms
+		OCR0A = i;
+		OCR1A = j;
+  ee:	0f 2e       	mov	r0, r31
+  f0:	f8 e8       	ldi	r31, 0x88	; 136
+  f2:	af 2e       	mov	r10, r31
+  f4:	b1 2c       	mov	r11, r1
+  f6:	f0 2d       	mov	r31, r0
+		OCR2A = k;
+  f8:	0f 2e       	mov	r0, r31
+  fa:	f3 eb       	ldi	r31, 0xB3	; 179
+  fc:	cf 2e       	mov	r12, r31
+  fe:	d1 2c       	mov	r13, r1
+ 100:	f0 2d       	mov	r31, r0
+ 102:	0b c0       	rjmp	.+22     	; 0x11a <main+0x84>
+		second++; // increment counter for 2nd PWM every time 1st is updated
+		i = i-25; // increase duty cycle of PWM1 by 10%
+		if(i < 30) // if duty cycle is more than 90% (inverted)
+			i = 230; // reset duty cycle back to 10%
+ 104:	ce 2d       	mov	r28, r14
+		if(second >= 9) { // if PWM1 reset duty cycle
+ 106:	d9 30       	cpi	r29, 0x09	; 9
+ 108:	40 f0       	brcs	.+16     	; 0x11a <main+0x84>
+			second = 0; // clear counter for PWM2
+			third++; // increment counter for PWM3
+ 10a:	f3 94       	inc	r15
+			j = j-25; // increase duty cycle of PWM2 by 10%
+ 10c:	19 51       	subi	r17, 0x19	; 25
+			if(j < 30) // if duty cycle is more than 90% (inverted)
+ 10e:	1e 31       	cpi	r17, 0x1E	; 30
+ 110:	18 f4       	brcc	.+6      	; 0x118 <main+0x82>
+		second++; // increment counter for 2nd PWM every time 1st is updated
+		i = i-25; // increase duty cycle of PWM1 by 10%
+		if(i < 30) // if duty cycle is more than 90% (inverted)
+			i = 230; // reset duty cycle back to 10%
+		if(second >= 9) { // if PWM1 reset duty cycle
+			second = 0; // clear counter for PWM2
+ 112:	d9 2d       	mov	r29, r9
+			third++; // increment counter for PWM3
+			j = j-25; // increase duty cycle of PWM2 by 10%
+			if(j < 30) // if duty cycle is more than 90% (inverted)
+				j = 230; // reset duty cycle back to 10%
+ 114:	1e 2d       	mov	r17, r14
+ 116:	01 c0       	rjmp	.+2      	; 0x11a <main+0x84>
+		second++; // increment counter for 2nd PWM every time 1st is updated
+		i = i-25; // increase duty cycle of PWM1 by 10%
+		if(i < 30) // if duty cycle is more than 90% (inverted)
+			i = 230; // reset duty cycle back to 10%
+		if(second >= 9) { // if PWM1 reset duty cycle
+			second = 0; // clear counter for PWM2
+ 118:	d9 2d       	mov	r29, r9
+			third++; // increment counter for PWM3
+			j = j-25; // increase duty cycle of PWM2 by 10%
+			if(j < 30) // if duty cycle is more than 90% (inverted)
+				j = 230; // reset duty cycle back to 10%
+		}
+		if(third >= 9) { // if PWM2 reset duty cycle
+ 11a:	88 e0       	ldi	r24, 0x08	; 8
+ 11c:	8f 15       	cp	r24, r15
+ 11e:	38 f4       	brcc	.+14     	; 0x12e <main+0x98>
+			third = 0; // clear counter for PWM3
+			k = k-25; // increase duty cycle of PWM3 by 10%
+ 120:	09 51       	subi	r16, 0x19	; 25
+			if(k < 30) // if duty cycle is more than 90% (inverted)
+ 122:	0e 31       	cpi	r16, 0x1E	; 30
+ 124:	18 f4       	brcc	.+6      	; 0x12c <main+0x96>
+			j = j-25; // increase duty cycle of PWM2 by 10%
+			if(j < 30) // if duty cycle is more than 90% (inverted)
+				j = 230; // reset duty cycle back to 10%
+		}
+		if(third >= 9) { // if PWM2 reset duty cycle
+			third = 0; // clear counter for PWM3
+ 126:	f9 2c       	mov	r15, r9
+			k = k-25; // increase duty cycle of PWM3 by 10%
+			if(k < 30) // if duty cycle is more than 90% (inverted)
+				k = 230; // reset duty cycle back to 10%
+ 128:	0e 2d       	mov	r16, r14
+ 12a:	01 c0       	rjmp	.+2      	; 0x12e <main+0x98>
+			j = j-25; // increase duty cycle of PWM2 by 10%
+			if(j < 30) // if duty cycle is more than 90% (inverted)
+				j = 230; // reset duty cycle back to 10%
+		}
+		if(third >= 9) { // if PWM2 reset duty cycle
+			third = 0; // clear counter for PWM3
+ 12c:	f9 2c       	mov	r15, r9
+			k = k-25; // increase duty cycle of PWM3 by 10%
+			if(k < 30) // if duty cycle is more than 90% (inverted)
+				k = 230; // reset duty cycle back to 10%
+		}
+		delay(); // delay for 40ms
+ 12e:	0e 94 40 00 	call	0x80	; 0x80 <delay>
+	
+    while (1) // loop forever
+    {
+		// update 3 PWM values at beginning of each loop
+		// from delay of 40ms
+		OCR0A = i;
+ 132:	c7 bd       	out	0x27, r28	; 39
+		OCR1A = j;
+ 134:	81 2f       	mov	r24, r17
+ 136:	90 e0       	ldi	r25, 0x00	; 0
+ 138:	f5 01       	movw	r30, r10
+ 13a:	91 83       	std	Z+1, r25	; 0x01
+ 13c:	80 83       	st	Z, r24
+		OCR2A = k;
+ 13e:	f6 01       	movw	r30, r12
+ 140:	00 83       	st	Z, r16
+		second++; // increment counter for 2nd PWM every time 1st is updated
+ 142:	df 5f       	subi	r29, 0xFF	; 255
+		i = i-25; // increase duty cycle of PWM1 by 10%
+ 144:	c9 51       	subi	r28, 0x19	; 25
+		if(i < 30) // if duty cycle is more than 90% (inverted)
+ 146:	ce 31       	cpi	r28, 0x1E	; 30
+ 148:	e8 f2       	brcs	.-70     	; 0x104 <main+0x6e>
+ 14a:	dd cf       	rjmp	.-70     	; 0x106 <main+0x70>
+
+0000014c <_exit>:
+ 14c:	f8 94       	cli
+
+0000014e <__stop_program>:
+ 14e:	ff cf       	rjmp	.-2      	; 0x14e <__stop_program>
